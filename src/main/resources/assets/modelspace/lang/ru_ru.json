@@ -47,5 +47,8 @@
   "modelspace.status.no_block": "Возьми блок в другую руку",
   "modelspace.status.bad_id": "Неизвестный id блока",
   "modelspace.hint.controls": "ПКМ+тяни: взгляд | СКМ+тяни: панорама | Колесо: зум (Ctrl: скорость) | WASD/Пробел/Shift: полёт",
+  "modelspace.btn.palette": "Палитра блоков",
+  "modelspace.palette.title": "Выбор блока",
+  "modelspace.palette.search": "Поиск...",
   "modelspace.status.added": "Блок добавлен"
 }

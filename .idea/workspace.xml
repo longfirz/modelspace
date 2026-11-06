@@ -5,52 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="57bde975-5234-4649-a994-fc0e7d377222" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/9.7.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.7.1/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/9.7.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.7.1/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/9.7.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.7.1/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/9.7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/9.7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/9.7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.7.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/9.7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.7.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/9.7.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.7.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/loom-cache/launch.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/loom-cache/launch.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/loom-cache/log4j.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/loom-cache/log4j.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/client/com/example/modelspace/client/EditorSession.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/client/com/example/modelspace/client/EditorState$Mode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/client/com/example/modelspace/client/EditorState$Space.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/client/com/example/modelspace/client/EditorState$Tool.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/client/com/example/modelspace/client/EditorState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/client/com/example/modelspace/client/FreecamController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/client/com/example/modelspace/client/ModelSpaceClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/client/com/example/modelspace/client/ModelSpaceHud.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/client/com/example/modelspace/client/ModelSpaceKeys.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/client/com/example/modelspace/client/editor/EditorScreen$Btn.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/client/com/example/modelspace/client/editor/EditorScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/client/com/example/modelspace/client/editor/Gizmo$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/client/com/example/modelspace/client/editor/Gizmo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/client/com/example/modelspace/client/editor/ModelDocument$Snapshot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/client/com/example/modelspace/client/editor/ModelDocument.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/client/com/example/modelspace/client/editor/Viewport.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/client/com/example/modelspace/client/mixin/CameraMixin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/client/com/example/modelspace/client/mixin/EntityMixin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/client/com/example/modelspace/client/mixin/LivingEntityMixin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/client/com/example/modelspace/client/mixin/MouseHandlerMixin.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/assets/modelspace/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/modelspace/lang/en_us.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/assets/modelspace/lang/ru_ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/modelspace/lang/ru_ru.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/fabric.mod.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/fabric.mod.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/java/com/example/modelspace/client/editor/EditorScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/com/example/modelspace/client/editor/EditorScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/java/com/example/modelspace/client/render/WorkspaceRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/java/com/example/modelspace/client/render/WorkspaceRenderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/modelspace/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/modelspace/lang/en_us.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/modelspace/lang/ru_ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/modelspace/lang/ru_ru.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fabric.mod.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fabric.mod.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,28 +61,35 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.000034096897524" />
-      <entry key="MS500" value="1.1278035663262402" />
-      <entry key="S2" value="1.5979098983880622" />
-      <entry key="S5" value="1.8140560293867405" />
-      <entry key="S10" value="1.9022536891867392" />
-      <entry key="S30" value="1.9816097526361585" />
-      <entry key="S60" value="2.129640428528419" />
-      <entry key="M2" value="2.4992756164314716" />
-      <entry key="M5" value="3.1323951304382773" />
-      <entry key="M10" value="3.500958293386691" />
-      <entry key="M15" value="3.6506716556620047" />
-      <entry key="M30" value="3.816406429763258" />
-      <entry key="H1" value="3.9058477018376188" />
-      <entry key="H2" value="3.9523188008259362" />
-      <entry key="H4" value="3.976006065732269" />
-      <entry key="D1" value="3.9959795361844854" />
-      <entry key="W1" value="3.9994251197723365" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0" />
+      <entry key="S30" value="1.0" />
+      <entry key="S60" value="1.000000000000618" />
+      <entry key="M2" value="1.0000013463967299" />
+      <entry key="M5" value="1.0097368862976266" />
+      <entry key="M10" value="1.1951905178579973" />
+      <entry key="M15" value="1.5327874177736123" />
+      <entry key="M30" value="2.4579586669557787" />
+      <entry key="H1" value="3.4141297146668603" />
+      <entry key="H2" value="4.107238694474162" />
+      <entry key="H4" value="4.525399693461294" />
+      <entry key="D1" value="4.916668448965553" />
+      <entry key="W1" value="4.987987533372769" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -136,23 +111,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.7071312278991204" />
-      <entry key="MS500" value="1.0526090112982918" />
-      <entry key="S2" value="1.5708662236907336" />
-      <entry key="S5" value="1.8017496053638113" />
-      <entry key="S10" value="1.8957967250862064" />
-      <entry key="S30" value="1.9788406840536505" />
-      <entry key="S60" value="2.1260945411283414" />
-      <entry key="M2" value="2.4948727098835763" />
-      <entry key="M5" value="3.1289849341627476" />
-      <entry key="M10" value="3.498798177912622" />
-      <entry key="M15" value="3.649110770096225" />
-      <entry key="M30" value="3.81555980304563" />
-      <entry key="H1" value="3.9054066663434823" />
-      <entry key="H2" value="3.9520936968306852" />
-      <entry key="H4" value="3.975892347137401" />
-      <entry key="D1" value="3.9959604193301965" />
-      <entry key="W1" value="3.9994223847601074" />
+      <entry key="MS100" value="0.6830201283771977" />
+      <entry key="MS500" value="0.9265880618903709" />
+      <entry key="S2" value="0.9811189749983187" />
+      <entry key="S5" value="0.9924043746858185" />
+      <entry key="S10" value="0.9961949481330542" />
+      <entry key="S30" value="0.9987300372550454" />
+      <entry key="S60" value="0.9993648168993537" />
+      <entry key="M2" value="0.9996837020259676" />
+      <entry key="M5" value="1.0095992169718462" />
+      <entry key="M10" value="1.1950065474858282" />
+      <entry key="M15" value="1.5325172604469524" />
+      <entry key="M30" value="2.457614055998293" />
+      <entry key="H1" value="3.4138465293759204" />
+      <entry key="H2" value="4.10705642708723" />
+      <entry key="H4" value="4.525296215321445" />
+      <entry key="D1" value="4.916649270297828" />
+      <entry key="W1" value="4.987984743147932" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">

@@ -47,5 +47,8 @@
   "modelspace.status.no_block": "Hold a block item in your other hand",
   "modelspace.status.bad_id": "Unknown block id",
   "modelspace.hint.controls": "RMB drag: look | MMB drag: pan | Wheel: zoom (Ctrl: speed) | WASD/Space/Shift: fly",
+  "modelspace.btn.palette": "Block Palette",
+  "modelspace.palette.title": "Pick a Block",
+  "modelspace.palette.search": "Search...",
   "modelspace.status.added": "Block added"
 }

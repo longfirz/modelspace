@@ -1,0 +1,13 @@
+{
+  "required": false,
+  "minVersion": "0.8",
+  "package": "com.example.modelspace.client.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "client": [
+    "HudHideMixin",
+    "HeldItemHideMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 0
+  }
+}

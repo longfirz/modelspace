@@ -12,7 +12,8 @@
     "client": ["com.example.modelspace.client.ModelSpaceClient"]
   },
   "mixins": [
-    { "config": "modelspace.client.mixins.json", "environment": "client" }
+    { "config": "modelspace.client.mixins.json", "environment": "client" },
+    { "config": "modelspace.client.hud.mixins.json", "environment": "client" }
   ],
   "depends": {
     "fabricloader": ">=0.19.5",
