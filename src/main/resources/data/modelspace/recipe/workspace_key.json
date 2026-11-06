@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["I", "S"],
+  "key": { "I": "minecraft:iron_ingot", "S": "minecraft:stick" },
+  "result": { "id": "modelspace:workspace_key", "count": 1 }
+}

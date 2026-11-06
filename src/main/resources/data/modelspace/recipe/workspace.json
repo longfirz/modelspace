@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": ["III", "IGI", "III"],
+  "key": { "I": "minecraft:iron_ingot", "G": "minecraft:glass" },
+  "result": { "id": "modelspace:workspace", "count": 1 }
+}

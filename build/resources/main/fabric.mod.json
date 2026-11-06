@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "modelspace",
+  "version": "0.1.0",
+  "name": "ModelSpace",
+  "description": "Block-based 3D modeling workspace with freecam and transform gizmos.",
+  "authors": ["you"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.example.modelspace.ModelSpace"],
+    "client": ["com.example.modelspace.client.ModelSpaceClient"]
+  },
+  "mixins": [
+    { "config": "modelspace.client.mixins.json", "environment": "client" }
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~26.3",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}
