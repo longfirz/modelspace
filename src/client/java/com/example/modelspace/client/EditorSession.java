@@ -28,7 +28,7 @@ public final class EditorSession {
 			initial.addAll(be.parts());
 		}
 		EditorState.doc = new ModelDocument(initial);
-		mc.setScreen(new EditorScreen());
+        mc.gui.setScreen(new EditorScreen());
 	}
 
 	public static void save() {

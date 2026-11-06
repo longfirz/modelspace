@@ -35,9 +35,9 @@ public final class ModelSpaceHud {
 		}
 		Minecraft mc = Minecraft.getInstance();
 		// Панель редактора рисует сам EditorScreen
-		if (mc.screen instanceof com.example.modelspace.client.editor.EditorScreen) {
-			return;
-		}
+        if (mc.gui.screen() instanceof com.example.modelspace.client.editor.EditorScreen) {
+            return;
+        }
 		Font font = mc.font;
 		if (font == null) {
 			return;

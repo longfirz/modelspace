@@ -366,10 +366,10 @@ public final class EditorScreen extends Screen {
 		}
 	}
 
-	@Override
-	public void onClose() {
-		Minecraft.getInstance().setScreen(null);
-	}
+    @Override
+    public void onClose() {
+        Minecraft.getInstance().gui.setScreen(null);
+    }
 
 	private void syncTextInput(boolean typing) {
 		if (typing != textInputActive) {
