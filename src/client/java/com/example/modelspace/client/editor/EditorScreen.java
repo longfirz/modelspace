@@ -88,6 +88,17 @@ public final class EditorScreen extends Screen {
 	private int listTop, listBottom, idBoxTop;
 	private int listScroll;
 
+	// ===== палитра блоков (модальный оверлей) =====
+	private boolean paletteOpen = false;
+	private final StringBuilder paletteSearch = new StringBuilder();
+	private final List<Block> paletteAll = new ArrayList<>();
+	private final List<Block> paletteFiltered = new ArrayList<>();
+	private int paletteScroll = 0;
+	private static final int PAL_W = 320;
+	private static final int PAL_H = 220;
+	private static final int PAL_CELL = 24;
+	private static final int PAL_COLS = 12;
+
 	// ввод
 	private boolean fwd, back, left, right, up, down, sprint;
 	private boolean ctrlHeld;
@@ -111,9 +122,103 @@ public final class EditorScreen extends Screen {
 	private Component status = Component.empty();
 	private long statusUntil;
 
+
+	private void drawPaletteOverlay(GuiGraphicsExtractor g, int mx, int my) {
+		// затемнение фона
+		g.fill(0, 0, width, height, 0x80000000);
+
+		int x0 = palX(), y0 = palY();
+		g.fill(x0, y0, x0 + PAL_W, y0 + PAL_H, 0xF0101418);
+		g.fill(x0, y0, x0 + PAL_W, y0 + 1, ACCENT);
+
+		// заголовок + поиск
+		text(g, Component.translatable("modelspace.palette.title"), x0 + 6, y0 + 5, ACCENT);
+		g.fill(x0 + 6, y0 + 16, x0 + PAL_W - 6, y0 + 30, 0xFF3A444C);
+		g.fill(x0 + 7, y0 + 17, x0 + PAL_W - 7, y0 + 29, FIELD_BG);
+		String shown = paletteSearch.length() > 0 ? paletteSearch + "_" : Component.translatable("modelspace.palette.search").getString();
+		text(g, fit(shown, PAL_W - 20), x0 + 10, y0 + 20, paletteSearch.length() > 0 ? TEXT : 0xFF667077);
+
+		// сетка блоков
+		int gridTop = y0 + 36;
+		int rows = Math.max(1, (y0 + PAL_H - 8 - gridTop) / PAL_CELL);
+		int maxScroll = Math.max(0, paletteFiltered.size() - rows * PAL_COLS);
+		paletteScroll = Math.max(0, Math.min(maxScroll, paletteScroll));
+
+		String hoverName = null;
+		for (int r = 0; r < rows; r++) {
+			for (int c = 0; c < PAL_COLS; c++) {
+				int i = paletteScroll + r * PAL_COLS + c;
+				if (i >= paletteFiltered.size()) break;
+				Block b = paletteFiltered.get(i);
+				int cx = x0 + 6 + c * PAL_CELL;
+				int cy = gridTop + r * PAL_CELL;
+				boolean hover = mx >= cx && mx < cx + PAL_CELL - 2 && my >= cy && my < cy + PAL_CELL - 2;
+				g.fill(cx, cy, cx + PAL_CELL - 2, cy + PAL_CELL - 2, hover ? BTN_HOT : BTN);
+				renderBlockIcon(g, b, cx + 3, cy + 3);
+				if (hover) hoverName = b.getName().getString();
+			}
+		}
+
+		// тултип рисуем последним — поверх всего
+		if (hoverName != null) {
+			int tw = font().width(Component.literal(hoverName));
+			g.fill(mx + 10, my - 12, mx + 10 + tw + 8, my + 3, 0xF0101418);
+			text(g, hoverName, mx + 14, my - 9, TEXT);
+		}
+	}
+
+	private void renderBlockIcon(GuiGraphicsExtractor g, Block block, int x, int y) {
+		int swatch = 0xFF000000 | block.defaultMapColor().col;
+		g.fill(x, y, x + 18, y + 18, swatch);
+		String letter = block.getName().getString().substring(0, 1).toUpperCase(Locale.ROOT);
+		text(g, letter, x + 6, y + 5, 0xFFFFFFFF);
+	}
+
+	private void togglePalette() {
+		paletteOpen = !paletteOpen;
+		if (paletteOpen) {
+			paletteSearch.setLength(0);
+			updatePaletteFilter();
+			FreecamController.clearInput();
+		}
+	}
+
+	private void updatePaletteFilter() {
+		String q = paletteSearch.toString().toLowerCase(Locale.ROOT).trim();
+		paletteFiltered.clear();
+		for (Block b : paletteAll) {
+			if (q.isEmpty() || b.getName().getString().toLowerCase(Locale.ROOT).contains(q)) {
+				paletteFiltered.add(b);
+			}
+		}
+		paletteScroll = 0;
+	}
+
+	private int palX() { return (width - PAL_W) / 2; }
+	private int palY() { return (height - PAL_H) / 2; }
+
+	private boolean overPalette(double mx, double my) {
+		return paletteOpen && mx >= palX() && mx < palX() + PAL_W && my >= palY() && my < palY() + PAL_H;
+	}
+
+	private void pickBlockFromPalette(Block b) {
+		addPart(b.defaultBlockState());
+		setStatus("modelspace.status.added");
+		paletteOpen = false; // закрыть после выбора
+	}
+
+
+
 	public EditorScreen() {
 		super(Component.translatable("modelspace.hud.title"));
 		buildButtons();
+		for (Block b : BuiltInRegistries.BLOCK) {
+			BlockState st = b.defaultBlockState();
+			if (!st.isAir() && b != ModBlocks.WORKSPACE) {
+				paletteAll.add(b);
+			}
+		}
+		updatePaletteFilter();
 	}
 
 	// ====================================================================== вспомогательное
@@ -164,6 +269,7 @@ public final class EditorScreen extends Screen {
 	private void buildButtons() {
 		btn("modelspace.tool.move", () -> EditorState.tool = EditorState.Tool.MOVE, () -> EditorState.tool == EditorState.Tool.MOVE);
 		btn("modelspace.tool.rotate", () -> EditorState.tool = EditorState.Tool.ROTATE, () -> EditorState.tool == EditorState.Tool.ROTATE);
+		btn("modelspace.btn.palette", this::togglePalette, () -> paletteOpen);
 		btn("modelspace.tool.scale", () -> EditorState.tool = EditorState.Tool.SCALE, () -> EditorState.tool == EditorState.Tool.SCALE);
 		buttons.add(new Btn(
 			() -> Component.translatable("modelspace.hud.space").append(": ").append(Component.translatable(
@@ -190,6 +296,8 @@ public final class EditorScreen extends Screen {
 			() -> { EditorSession.save(); setStatus("modelspace.status.saved"); }, () -> false, () -> true));
 		btn("modelspace.btn.exit", this::onClose, () -> false);
 	}
+
+
 
 	private void layoutToolbar() {
 		int x = MARGIN;
@@ -352,12 +460,17 @@ public final class EditorScreen extends Screen {
 	}
 
 	@Override
+	public void extractBackground(GuiGraphicsExtractor g, int mouseX, int mouseY, float partialTick) {
+		// Полностью убираем фон — мир и модель видны за интерфейсом редактора
+	}
+
+	@Override
 	public void tick() {
 		if (doc() == null || !FreecamController.isActive()) {
 			onClose();
 			return;
 		}
-		boolean typing = fGroup >= 0 || idFocus;
+		boolean typing = fGroup >= 0 || idFocus || paletteOpen;
 		syncTextInput(typing);
 		if (typing) {
 			FreecamController.clearInput();
@@ -392,6 +505,24 @@ public final class EditorScreen extends Screen {
 	public boolean keyPressed(KeyEvent event) {
 		ctrlHeld = event.hasControlDown();
 		int key = event.key();
+
+		if (paletteOpen) {
+			if (key == InputConstants.KEY_ESCAPE) { paletteOpen = false; return true; }
+			if (key == InputConstants.KEY_BACKSPACE) {
+				if (paletteSearch.length() > 0) {
+					paletteSearch.setLength(paletteSearch.length() - 1);
+					updatePaletteFilter();
+				}
+				return true;
+			}
+			if (key == InputConstants.KEY_RETURN || key == InputConstants.KEY_NUMPADENTER) {
+				if (!paletteFiltered.isEmpty()) pickBlockFromPalette(paletteFiltered.get(0));
+				return true;
+			}
+			return true;
+		}
+
+
 		ModelDocument doc = doc();
 		if (doc == null) {
 			return false;
@@ -507,6 +638,16 @@ public final class EditorScreen extends Screen {
 		if (!Character.isValidCodePoint(cp) || cp > 0xFFFF) {
 			return false;
 		}
+
+		if (paletteOpen) {
+			char ch = (char) cp;
+			if (paletteSearch.length() < 48 && !Character.isISOControl(ch)) {
+				paletteSearch.append(Character.toLowerCase(ch));
+				updatePaletteFilter();
+			}
+			return true;
+		}
+
 		char c = (char) cp;
 		if (fGroup >= 0) {
 			if (c == ',') {
@@ -542,12 +683,40 @@ public final class EditorScreen extends Screen {
 		if (doc == null) {
 			return false;
 		}
+
 		double mx = event.x();
 		double my = event.y();
 		int button = event.button();
 		clickShift = event.hasShiftDown();
 		boolean shift = event.hasShiftDown();
 		boolean ctrl = event.hasControlDown();
+
+		// ===== модальная палитра перехватывает весь ввод =====
+		if (paletteOpen) {
+			if (!overPalette(mx, my)) {
+				paletteOpen = false;
+				return true;
+			}
+
+			int x0 = palX();
+			int y0 = palY();
+			int gridTop = y0 + 36;
+
+			if (button == InputConstants.MOUSE_BUTTON_LEFT && my >= gridTop && my < y0 + PAL_H - 8) {
+				int col = (int) ((mx - x0 - 6) / PAL_CELL);
+				int row = (int) ((my - gridTop) / PAL_CELL);
+
+				if (col >= 0 && col < PAL_COLS) {
+					int i = paletteScroll + row * PAL_COLS + col;
+					if (i >= 0 && i < paletteFiltered.size()) {
+						pickBlockFromPalette(paletteFiltered.get(i));
+					}
+				}
+			}
+
+			return true;
+		}
+		// =====================================================
 
 		commitField();
 		idFocus = false;
@@ -565,6 +734,9 @@ public final class EditorScreen extends Screen {
 				}
 				return true;
 			}
+
+
+
 			if (overLeft(mx, my)) {
 				clickLeft(mx, my, shift, ctrl);
 				return true;
@@ -686,6 +858,16 @@ public final class EditorScreen extends Screen {
 		if (doc == null || scrollY == 0.0) {
 			return false;
 		}
+
+		if (paletteOpen) {
+			if (overPalette(mx, my)) {
+				int rows = Math.max(1, (PAL_H - 44) / PAL_CELL);
+				int maxScroll = Math.max(0, paletteFiltered.size() - rows * PAL_COLS);
+				paletteScroll = Math.max(0, Math.min(maxScroll, paletteScroll - (int) Math.signum(scrollY) * 2));
+			}
+			return true;
+		}
+
 		if (overLeft(mx, my)) {
 			int rows = Math.max(1, (listBottom - listTop) / ROW_H);
 			int max = Math.max(0, doc.parts().size() - rows);
@@ -779,6 +961,7 @@ public final class EditorScreen extends Screen {
 		Minecraft mc = Minecraft.getInstance();
 		layoutToolbar();
 
+
 		Vec3 c = FreecamController.interpolatedPos(partialTick);
 		BlockPos a = EditorState.anchor;
 		vp = new Viewport(c.x - a.getX(), c.y - a.getY(), c.z - a.getZ(),
@@ -792,7 +975,12 @@ public final class EditorScreen extends Screen {
 		drawToolbar(g, mouseX, mouseY);
 		drawLeft(g, doc);
 		drawRight(g, doc);
+
 		drawFooter(g);
+		if (paletteOpen) {
+			drawPaletteOverlay(g, mouseX, mouseY);
+		}
+
 	}
 
 	private void drawSelection(GuiGraphicsExtractor g, ModelDocument doc) {

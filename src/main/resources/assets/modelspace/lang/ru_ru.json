@@ -46,5 +46,6 @@
   "modelspace.status.limit": "Достигнут лимит частей",
   "modelspace.status.no_block": "Возьми блок в другую руку",
   "modelspace.status.bad_id": "Неизвестный id блока",
-  "modelspace.hint.controls": "ПКМ+тяни: взгляд | СКМ+тяни: панорама | Колесо: зум (Ctrl: скорость) | WASD/Пробел/Shift: полёт"
+  "modelspace.hint.controls": "ПКМ+тяни: взгляд | СКМ+тяни: панорама | Колесо: зум (Ctrl: скорость) | WASD/Пробел/Shift: полёт",
+  "modelspace.status.added": "Блок добавлен"
 }

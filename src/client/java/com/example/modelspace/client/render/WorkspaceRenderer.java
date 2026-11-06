@@ -4,6 +4,7 @@ import com.example.modelspace.block.WorkspaceBlockEntity;
 import com.example.modelspace.client.EditorState;
 import com.example.modelspace.model.ModelPart;
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.core.BlockPos;
 import net.minecraft.util.LightCoordsUtil;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.block.model.BlockDisplayContext;
@@ -19,6 +20,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Matrix4f;
+import net.minecraft.world.level.block.entity.BoundingBoxRenderable;
 
 /** Рисует части модели Workspace как блоки с произвольной трансформацией. */
 public class WorkspaceRenderer implements BlockEntityRenderer<WorkspaceBlockEntity, WorkspaceRenderState> {
@@ -41,7 +43,14 @@ public class WorkspaceRenderer implements BlockEntityRenderer<WorkspaceBlockEnti
         BlockEntityRenderState.extractBase(be, state, crumbling);
 
         // ====== ДОБАВЬ ЭТУ СТРОКУ СЮДА ======
-        state.renderBoundingBox = new AABB(be.getBlockPos()).inflate(48.0);
+		// Рамка отсечения: 48 блоков в каждую сторону от позиции блока
+		// Рамка отсечения: 48 блоков в каждую сторону от позиции блока
+		BlockPos pos = be.getBlockPos();
+		state.box = BoundingBoxRenderable.RenderableBox.fromCorners(
+				pos.getX() - 48, pos.getY() - 48, pos.getZ() - 48,
+				pos.getX() + 48, pos.getY() + 48, pos.getZ() + 48);
+		state.mode = BoundingBoxRenderable.Mode.BOX;
+		state.isVisible = true;
         // =======================================
 
         // Сам блок Workspace непрозрачный, поэтому свет в его клетке нулевой — берём свет сверху.

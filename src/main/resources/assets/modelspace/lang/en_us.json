@@ -46,5 +46,6 @@
   "modelspace.status.limit": "Part limit reached",
   "modelspace.status.no_block": "Hold a block item in your other hand",
   "modelspace.status.bad_id": "Unknown block id",
-  "modelspace.hint.controls": "RMB drag: look | MMB drag: pan | Wheel: zoom (Ctrl: speed) | WASD/Space/Shift: fly"
+  "modelspace.hint.controls": "RMB drag: look | MMB drag: pan | Wheel: zoom (Ctrl: speed) | WASD/Space/Shift: fly",
+  "modelspace.status.added": "Block added"
 }
