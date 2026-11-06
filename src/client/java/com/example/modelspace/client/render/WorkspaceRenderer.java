@@ -35,20 +35,24 @@ public class WorkspaceRenderer implements BlockEntityRenderer<WorkspaceBlockEnti
 		return new WorkspaceRenderState();
 	}
 
-	@Override
-	public void extractRenderState(WorkspaceBlockEntity be, WorkspaceRenderState state, float partialTick,
-			Vec3 cameraPos, ModelFeatureRenderer.CrumblingOverlay crumbling) {
-		BlockEntityRenderState.extractBase(be, state, crumbling);
+    @Override
+    public void extractRenderState(WorkspaceBlockEntity be, WorkspaceRenderState state, float partialTick,
+                                   Vec3 cameraPos, ModelFeatureRenderer.CrumblingOverlay crumbling) {
+        BlockEntityRenderState.extractBase(be, state, crumbling);
 
-		// Сам блок Workspace непрозрачный, поэтому свет в его клетке нулевой — берём свет сверху.
-		Level level = be.getLevel();
+        // ====== ДОБАВЬ ЭТУ СТРОКУ СЮДА ======
+        state.renderBoundingBox = new AABB(be.getBlockPos()).inflate(48.0);
+        // =======================================
+
+        // Сам блок Workspace непрозрачный, поэтому свет в его клетке нулевой — берём свет сверху.
+        Level level = be.getLevel();
         if (level != null) {
             state.lightCoords = LightCoordsUtil.getLightCoords(level, be.getBlockPos().above());
         }
 
-		int n = 0;
-		// Во время сессии показываем рабочую копию редактора, а не сохранённые данные
-		for (ModelPart p : EditorState.partsFor(be.getBlockPos(), be.parts())) {
+        int n = 0;
+        // Во время сессии показываем рабочую копию редактора, а не сохранённые данные
+        for (ModelPart p : EditorState.partsFor(be.getBlockPos(), be.parts())) {
 			if (!p.visible) {
 				continue;
 			}
@@ -75,9 +79,5 @@ public class WorkspaceRenderer implements BlockEntityRenderer<WorkspaceBlockEnti
 		}
 	}
 
-	/** Части могут выходить далеко за пределы клетки блока — не отсекаем по видимости блока. */
-	@Override
-	public AABB getRenderBoundingBox(WorkspaceBlockEntity be) {
-		return new AABB(be.getBlockPos()).inflate(48.0);
-	}
+
 }
