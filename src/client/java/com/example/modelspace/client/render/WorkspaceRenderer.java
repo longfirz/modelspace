@@ -4,7 +4,7 @@ import com.example.modelspace.block.WorkspaceBlockEntity;
 import com.example.modelspace.client.EditorState;
 import com.example.modelspace.model.ModelPart;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.renderer.LevelRenderer;
+import net.minecraft.util.LightCoordsUtil;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.block.BlockDisplayContext;
 import net.minecraft.client.renderer.block.BlockModelRenderState;
@@ -42,9 +42,9 @@ public class WorkspaceRenderer implements BlockEntityRenderer<WorkspaceBlockEnti
 
 		// Сам блок Workspace непрозрачный, поэтому свет в его клетке нулевой — берём свет сверху.
 		Level level = be.getLevel();
-		if (level != null) {
-			state.lightCoords = LevelRenderer.getLightCoords(level, be.getBlockPos().above());
-		}
+        if (level != null) {
+            state.lightCoords = LightCoordsUtil.getLightCoords(level, be.getBlockPos().above());
+        }
 
 		int n = 0;
 		// Во время сессии показываем рабочую копию редактора, а не сохранённые данные

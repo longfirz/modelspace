@@ -7,7 +7,7 @@ import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 
 public final class ModelSpaceKeys {
-	private static final KeyMapping.Category CATEGORY = new KeyMapping.Category(ModelSpace.id("main"));
+    private static final KeyMapping.Category CATEGORY = KeyMapping.Category.register(ModelSpace.id("main"));
 
 	public static KeyMapping exit;
 	public static KeyMapping toolMove;
